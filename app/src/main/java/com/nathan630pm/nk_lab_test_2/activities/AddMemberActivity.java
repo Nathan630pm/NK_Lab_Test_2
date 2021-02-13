@@ -23,6 +23,9 @@ public class AddMemberActivity extends AppCompatActivity {
     private EditText ETAge;
     private Button BAddMember;
 
+    private Member member = null;
+
+
     private MemberRepository myRepo;
 
     @Override
@@ -38,6 +41,24 @@ public class AddMemberActivity extends AppCompatActivity {
 
         this.myRepo = new MemberRepository(getApplication());
 
+        Intent intent = getIntent();
+        if(intent.hasExtra("member")){
+            Bundle extras = getIntent().getExtras();
+            String memberID = extras.getString("member");
+            int memID = Integer.parseInt(memberID);
+
+            getMember(memID);
+
+        }
+
+        if(member != null) {
+            ETEmail.setText(member.email);
+            ETName.setText(member.name);
+            ETAge.setText(member.age);
+
+            BAddMember.setText("Edit Member (" + member.name + ")");
+        }
+
         BAddMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,19 +71,32 @@ public class AddMemberActivity extends AppCompatActivity {
 
     private void addMember() {
         Log.d(TAG, "Add member clicked.");
-        if(ETName.getText().toString().equals("") || ETEmail.getText().toString().equals("") || ETAge.getText().toString().equals("")){
-            Log.e(TAG, "please enter a name and or email.");
-        }
-        else {
-            Member addmember = new Member();
-            addmember.name = ETName.getText().toString();
-            addmember.email = ETEmail.getText().toString();
-            addmember.age = ETAge.getText().toString();
+        if(member == null){
+            if(ETName.getText().toString().equals("") || ETEmail.getText().toString().equals("") || ETAge.getText().toString().equals("")){
+                Log.e(TAG, "please enter a name and or email.");
+            }
+            else {
+                Member addmember = new Member();
+                addmember.name = ETName.getText().toString();
+                addmember.email = ETEmail.getText().toString();
+                addmember.age = ETAge.getText().toString();
 
-            myRepo.insertMember(addmember);
+                myRepo.insertMember(addmember);
+                finish();
+
+            }
+        }else {
+            member.name = ETName.getText().toString();
+            member.email = ETEmail.getText().toString();
+            member.age = ETAge.getText().toString();
+
+            myRepo.updateMember(member);
             finish();
-
         }
+    }
+
+    private void getMember(int id) {
+        member = myRepo.getMember(id);
     }
 
 

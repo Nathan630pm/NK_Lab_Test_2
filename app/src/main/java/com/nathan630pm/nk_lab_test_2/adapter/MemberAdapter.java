@@ -1,6 +1,7 @@
 package com.nathan630pm.nk_lab_test_2.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nathan630pm.nk_lab_test_2.R;
+import com.nathan630pm.nk_lab_test_2.activities.AddMemberActivity;
 import com.nathan630pm.nk_lab_test_2.database.model.Member;
 import com.squareup.picasso.Picasso;
 
@@ -45,6 +47,14 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
                 .load(R.drawable.ic_person)
                 .placeholder(R.drawable.ic_person)
                 .into(holder.img);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, AddMemberActivity.class);
+                i.putExtra("member", ""+item.MemberId);
+                context.startActivity(i);
+            }
+        });
 
     }
 
