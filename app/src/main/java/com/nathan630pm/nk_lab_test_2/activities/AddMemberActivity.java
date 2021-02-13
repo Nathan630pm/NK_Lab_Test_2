@@ -2,6 +2,7 @@ package com.nathan630pm.nk_lab_test_2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,8 @@ public class AddMemberActivity extends AppCompatActivity {
 
         this.BAddMember = findViewById(R.id.BAddMember);
 
+        this.myRepo = new MemberRepository(getApplication());
+
         BAddMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,11 +50,12 @@ public class AddMemberActivity extends AppCompatActivity {
             Log.e(TAG, "please enter a name and or email.");
         }
         else {
-            Member member = new Member();
-            member.name = ETName.getText().toString();
-            member.email = ETEmail.getText().toString();
+            Member addmember = new Member();
+            addmember.name = ETName.getText().toString();
+            addmember.email = ETEmail.getText().toString();
 
-            myRepo.insertMember(member);
+            myRepo.insertMember(addmember);
+            startActivity(new Intent(AddMemberActivity.this, MainActivity.class));
 
         }
     }

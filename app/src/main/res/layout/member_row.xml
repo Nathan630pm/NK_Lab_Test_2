@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fontFamily="sans-serif-medium"
-    android:padding="5sp">
+    android:padding="5sp"
+    android:id="@+id/membersLayout">
 
     <ImageView
         android:layout_width="90sp"

@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             members.addAll(myRepo.getMembers());
-            Log.i(TAG, "loaded the items");
+            Log.d(TAG, "loaded the items");
+            Log.e(TAG, "Members: " + myRepo.getMembers().toString());
         }
 
         Log.i(TAG, members.toString());

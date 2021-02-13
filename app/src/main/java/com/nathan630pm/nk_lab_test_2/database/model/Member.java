@@ -11,5 +11,15 @@ public class Member {
     public String name;
     public String email;
 
+    public void setMemberId(int memberId) {
+        MemberId = memberId;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
