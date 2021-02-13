@@ -5,6 +5,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Update;
 
+//App developed by: Nathan Kennedy, Student ID: 101333351
+
 public interface BaseDao<T> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(T t);

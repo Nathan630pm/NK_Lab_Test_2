@@ -1,7 +1,9 @@
 package com.nathan630pm.nk_lab_test_2.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +24,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+//App developed by: Nathan Kennedy, Student ID: 101333351
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private MemberViewModel memberViewModel;
     private List<Member> memberList = new ArrayList<>();
     private MemberRepository memberRepository;
+    private ItemTouchHelper helper;
 
 
     @Override
@@ -47,14 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
         memberViewModel = new MemberViewModel(getApplication());
 
-        if(myRepo.getMembers().size() == 0) {
+        helper = new ItemTouchHelper(simpleCallback);
+        helper.attachToRecyclerView(recyclerView);
 
-        }
-        else {
-            members.addAll(myRepo.getMembers());
-            Log.d(TAG, "loaded the items");
-            Log.e(TAG, "Members: " + myRepo.getMembers().toString());
-        }
+
+
+//        members.addAll(myRepo.getMembers());
+        Log.d(TAG, "loaded the items");
+        Log.e(TAG, "Members: " + members.toString());
+        Log.e(TAG, "Members Size: " + members.size());
+
+        memberViewModel.getAllMembers().observe(this, members1 -> {
+            members.removeAll(members);
+            members.addAll(memberViewModel.getAllMembers().getValue());
+            adapter.notifyDataSetChanged();
+        });
+
 
         Log.i(TAG, members.toString());
 
@@ -62,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+
 
         btnAddMember.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,5 +87,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            memberViewModel.deleteMember(members.get(viewHolder.getAdapterPosition()));
+            memberViewModel.getAllMembers();
+        }
+    };
 }

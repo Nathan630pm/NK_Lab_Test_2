@@ -10,6 +10,8 @@ import com.nathan630pm.nk_lab_test_2.database.model.Member;
 
 import java.util.List;
 
+//App developed by: Nathan Kennedy, Student ID: 101333351
+
 public class MemberRepository {
 
 
@@ -20,9 +22,10 @@ public class MemberRepository {
     public MemberRepository(Application application) {
         db = MyDatabase.getDatabase(application);
         memberDao = db.memberDao();
+        members = memberDao.getMembers();
     }
 
-    public List<Member> getMembers() {return memberDao.getMembers();}
+    public LiveData<List<Member>> getMembers() {return members;}
 
     public int getMembersSize() {return memberDao.getMemberSize();}
 

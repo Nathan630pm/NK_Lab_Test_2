@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NK_Lab_Test_2">
         <activity android:name=".activities.AddMemberActivity"></activity>
-        <activity android:name=".activities.MemberActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -33,4 +33,14 @@
         android:layout_below="@+id/tvTitle"
         android:id="@+id/tvEmail"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_marginTop="5sp"
+        android:textSize="12sp"
+        android:layout_toRightOf="@+id/img"
+        android:layout_below="@+id/tvEmail"
+        android:id="@+id/tvAge"/>
+
 </RelativeLayout>

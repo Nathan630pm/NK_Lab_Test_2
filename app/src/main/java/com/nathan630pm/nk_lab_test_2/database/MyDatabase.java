@@ -9,7 +9,9 @@ import androidx.room.RoomDatabase;
 import com.nathan630pm.nk_lab_test_2.database.dao.MemberDao;
 import com.nathan630pm.nk_lab_test_2.database.model.Member;
 
-@Database(entities = {Member.class}, version = 3, exportSchema = false)
+//App developed by: Nathan Kennedy, Student ID: 101333351
+
+@Database(entities = {Member.class}, version = 4, exportSchema = false)
 public abstract class MyDatabase extends RoomDatabase {
 
     private static MyDatabase db;

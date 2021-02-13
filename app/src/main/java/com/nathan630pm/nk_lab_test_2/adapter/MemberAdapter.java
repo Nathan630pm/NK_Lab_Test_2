@@ -1,9 +1,7 @@
 package com.nathan630pm.nk_lab_test_2.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,11 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nathan630pm.nk_lab_test_2.R;
-import com.nathan630pm.nk_lab_test_2.activities.MemberActivity;
 import com.nathan630pm.nk_lab_test_2.database.model.Member;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+//App developed by: Nathan Kennedy, Student ID: 101333351
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHolder> {
     private ArrayList<Member> members;
@@ -41,18 +40,12 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
         Member item = members.get(position);
         holder.tvTitle.setText(item.name);
         holder.tvEmail.setText(item.email);
+        holder.tvAge.setText("Age:" + item.age);
         Picasso.get()
                 .load(R.drawable.ic_person)
                 .placeholder(R.drawable.ic_person)
                 .into(holder.img);
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, MemberActivity.class);
-                i.putExtra("member", item.MemberId);
-                context.startActivity(i);
-            }
-        });
+
     }
 
 
@@ -61,7 +54,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
         return members.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTitle, tvEmail;
+        private TextView tvTitle, tvEmail, tvAge;
         private ImageView img;
         private RelativeLayout layout;
 
@@ -69,6 +62,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MyViewHold
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvEmail = itemView.findViewById(R.id.tvEmail);
+            tvAge = itemView.findViewById(R.id.tvAge);
             img = itemView.findViewById(R.id.img);
             layout = itemView.findViewById(R.id.membersLayout);
         }

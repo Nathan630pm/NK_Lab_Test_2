@@ -11,11 +11,13 @@ import com.nathan630pm.nk_lab_test_2.database.model.Member;
 
 import java.util.List;
 
+//App developed by: Nathan Kennedy, Student ID: 101333351
+
 @Dao
 public interface MemberDao extends BaseDao<Member> {
 
     @Query("SELECT * FROM tblMember ORDER BY MemberId asc")
-    List<Member> getMembers();
+    LiveData<List<Member>> getMembers();
 
     @Query("SELECT COUNT(*) FROM tblMember")
     int getMemberSize();

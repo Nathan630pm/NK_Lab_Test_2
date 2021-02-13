@@ -11,6 +11,8 @@ import com.nathan630pm.nk_lab_test_2.repository.MemberRepository;
 
 import java.util.List;
 
+//App developed by: Nathan Kennedy, Student ID: 101333351
+
 public class MemberViewModel extends AndroidViewModel {
 
     private LiveData<List<Member>> allMembers;
@@ -22,7 +24,7 @@ public class MemberViewModel extends AndroidViewModel {
 //        allMembers = memberRepository.getMembers();
     }
 
-    public List<Member> getAllMembers() {return memberRepository.getMembers();}
+    public LiveData<List<Member>> getAllMembers() {return memberRepository.getMembers();}
 
     public int getMemberSize() {return memberRepository.getMembersSize();}
 

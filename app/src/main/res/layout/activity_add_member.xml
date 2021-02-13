@@ -34,6 +34,20 @@
         android:layout_marginEnd="8dp"
         />
 
+    <EditText
+        android:id="@+id/ETAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Member Age"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETEmail"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        />
+
     <Button
         android:id="@+id/BAddMember"
         android:layout_width="0dp"
