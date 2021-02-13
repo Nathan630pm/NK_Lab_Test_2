@@ -14,8 +14,8 @@ import java.util.List;
 @Dao
 public interface MemberDao extends BaseDao<Member> {
 
-    @Query("SELECT * FROM tblMember")
-    LiveData<List<Member>> getMembers();
+    @Query("SELECT * FROM tblMember ORDER BY MemberId asc")
+    List<Member> getMembers();
 
     @Query("SELECT COUNT(*) FROM tblMember")
     int getMemberSize();

@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddMemberActivity">
 
+    <EditText
+        android:id="@+id/ETName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Member Name"
+        android:inputType="textPersonName"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/ETEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Member Email"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETName"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        />
+
+    <Button
+        android:id="@+id/BAddMember"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add Member"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETEmail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintVertical_bias="0.9"
+        android:textColor="#FF9800"
+        android:background="#00a800"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

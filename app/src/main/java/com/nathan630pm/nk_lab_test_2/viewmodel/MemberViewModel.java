@@ -19,10 +19,10 @@ public class MemberViewModel extends AndroidViewModel {
     public MemberViewModel(@NonNull Application application) {
         super(application);
         memberRepository = new MemberRepository(application);
-        allMembers = memberRepository.getMembers();
+//        allMembers = memberRepository.getMembers();
     }
 
-    public LiveData<List<Member>> getAllMembers() {return memberRepository.getMembers();}
+    public List<Member> getAllMembers() {return memberRepository.getMembers();}
 
     public int getMemberSize() {return memberRepository.getMembersSize();}
 

@@ -20,10 +20,9 @@ public class MemberRepository {
     public MemberRepository(Application application) {
         db = MyDatabase.getDatabase(application);
         memberDao = db.memberDao();
-        members = memberDao.getMembers();
     }
 
-    public LiveData<List<Member>> getMembers() {return members;}
+    public List<Member> getMembers() {return memberDao.getMembers();}
 
     public int getMembersSize() {return memberDao.getMemberSize();}
 
