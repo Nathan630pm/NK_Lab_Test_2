@@ -1,6 +1,7 @@
 package com.nathan630pm.nk_lab_test_2.database.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,6 +11,7 @@ import com.nathan630pm.nk_lab_test_2.database.model.Member;
 
 import java.util.List;
 
+@Dao
 public interface MemberDao extends BaseDao<Member> {
 
     @Query("SELECT * FROM tblMember")
